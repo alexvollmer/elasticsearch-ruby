@@ -22,8 +22,7 @@ describe 'client#render_search_template' do
   let(:expected_args) do
     [
         'GET',
-        '_render/template',
-        { id: 'foo' },
+        '_render/template/id',
         { foo: 'bar' }
     ]
   end

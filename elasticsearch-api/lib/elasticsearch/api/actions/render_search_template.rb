@@ -29,8 +29,14 @@ module Elasticsearch
       def render_search_template(arguments={})
         method = 'GET'
         path   = "_render/template"
+
+        # If an `id` is specified, the path for template-rendering changes
+        id     = arguments.delete(:id)
+        path += "/#{id}" if id
+
         params = Utils.__validate_and_extract_params arguments, ParamsRegistry.get(__method__)
         body   = arguments[:body]
+
 
         perform_request(method, path, params, body).body
       end
